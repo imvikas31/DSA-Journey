@@ -29,6 +29,10 @@ void bubbleSort(vector<int>&nums){
 
 // Space Complexity = O(1) No extra space is used.
 
+
+// We can also find kth largest or kth smallest element using Bubble sort.
+// Kth largest will be at the (n-k)th index where n is size of the array
+// Kth smallest will be at the (k-1)th index
 int secondLargest(vector<int>&nums){
     for(int i = 0;i<2;i++){
         for(vector<int>::iterator it = nums.begin()+1; it < nums.end()-i;it++){
