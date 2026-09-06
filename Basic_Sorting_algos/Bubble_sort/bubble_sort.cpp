@@ -9,13 +9,33 @@ using namespace std;
 // Brute Force Approach :
 void bubbleSort(vector<int>&nums){
     for(int i = 0;i<nums.size();i++){
+      
         for(vector<int>::iterator it = nums.begin()+1; it < nums.end()-i;it++){ // you can use simple loop instead of iterator as per you convenience.
-        if(*it < *(it-1)){
-            swap(*it, *(it-1));
+            if(*it < *(it-1)){
+                swap(*it, *(it-1));
+            } 
         }
     }
+}
+
+// Brute Force Approach :
+void bubbleSortOptimized(vector<int>&nums){
+    for(int i = 0;i<nums.size();i++){
+        bool flag = false;
+        for(vector<int>::iterator it = nums.begin()+1; it < nums.end()-i;it++){ // you can use simple loop instead of iterator as per you convenience.
+            if(*it < *(it-1)){
+                swap(*it, *(it-1));
+                flag = true;
+            } else{
+                if(flag){
+                    break;
+                }
+            }
+        }
     }
 }
+
+
 
 // Time Complexity = O(n²)
 
@@ -45,8 +65,6 @@ int secondLargest(vector<int>&nums){
     return secondLargest;
 }
 
-
-
 void print(vector<int>&nums){
     for(int el : nums){
         cout<<el<<" ";
@@ -63,6 +81,10 @@ int main() {
     bubbleSort(nums);
 
     cout<<"After Sorting : ";
+    print(nums);
+
+    bubbleSortOptimized(nums);
+    cout<<"After Optimized Sorting : ";
     print(nums);
 
     int secondMax = secondLargest(nums);
